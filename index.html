@@ -1,64 +1,52 @@
-<!DOCTYPE html>   <！DOCTYPE   ！文档类型 html   超文本标记语言 >   <！DOCTYPE   ！文档类型   ！文档类型 html   超文本标记语言   超文本标记语言 >   <！DOCTYPE   ！文档类型   ！文档类型   ！文档类型 html   超文本标记语言   超文本标记语言   超文本标记语言 >   <！DOCTYPE   ！文档类型   ！文档类型   ！文档类型 html   超文本标记语言   超文本标记语言   超文本标记语言   超文本标记语言 >   <！DOCTYPE   ！文档类型   ！文档类型   ！文档类型 html   超文本标记语言   超文本标记语言   超文本标记语言   超文本标记语言   超文本标记语言 >   <！DOCTYPE   ！文档类型   ！文档类型   ！文档类型 html   超文本标记语言   超文本标记语言   超文本标记语言   超文本标记语言   超文本标记语言   超文本标记语言 >
-<html lang="zh-CN">   < html   超文本标记语言 lang   朗 = "应用" >
-  
-    Hypertext Markup Language lang超文本标记语言（HTML）
-    Lang = "Application"   语言 = "应用程序
-  
-  
-    Hypertext Markup Language lang超文本标记语言（HTML）
-    Lang = "Application"   语言 = "应用程序
-  
-  
-    Hypertext Markup Language lang超文本标记语言（HTML）
-    Lang = "Application"   语言 = "应用程序
-  
-<head>   < >负责人
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>迷雾的个人主页</title>   My Personal Homepage - MistMy Personal Homepage - Mist
-    <style>   < >风格
+    <title>迷雾的个人主页</title>
+    <style>
         * {
-            margin: 0;   保证金:0;
-            padding: 0;   填充:0;
-            box-sizing: border-box;   盒模型尺寸计算方式：内容、内边距、边框的总和决定元素的尺寸。
-            font-family: 'Microsoft YaHei', sans-serif;字体族：'微软雅黑'， 无衬线字体font-family: 'Microsoft YaHei'   “微软YaHei”, sans-serif; Font family: 'Microsoft YaHei'   “微软YaHei”, sans-serif
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
         }
         
-        body {   身体{
-            background-color: #f5f5f5;背景颜色：#f5f5f5background-color: #f5f5f5; Background color   颜色: #f5f5f5
-            color: #333;   颜色:# 333;   color   颜色: #333;   Color: #333;
-            line-height: 1.6;   行高:1.6;   line-height   行高: 1.6;  Line height: 1.6;
-            padding: 20px;   填充:20 px;   padding   填充: 20px;   Padding: 20px;
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
             max-width: 800px;
-            margin: 0 auto;   Margin: 0 auto；外边距：0 自动；  外边距：0 自动；
+            margin: 0 auto;
         }
         
-        .container {   ．容器{
-            background-color   背景颜色: white;
-            border-radius: 15px;   圆角半径：15 像素；
-            padding   填充: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);盒阴影：0 5 像素 15 像素 rgba(0,0,0,0.1)；
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        header {   标题{
-            text-align: center;   text-align:中心;
-            margin-bottom: 30px;   margin-bottom: 30 像素
-               底部内边距：20 像素；padding-bottom: 20px;
-            border-bottom: 2px solid #eee;下边框：2 像素宽的实线，颜色为 #eee；
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
         }
         
-        .avatar {   ．《阿凡达》(
-            width: 150px;   宽度:150 px;
-            height: 150px;   身高:150 px;
-            border-radius: 50%;   这个特性:50%;
-            object-fit: cover;   object-fit:封面;
-            margin: 0 auto 15px;   边距：0 auto   汽车 15px；
-            border: 5px solid #a3d5ff;   边框：5 像素宽的实线，颜色为 #a3d5ff；
-            display: block;   显示:块;
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 5px solid #a3d5ff;
+            display: block;
         }
         
         h1 {
-            color: #4a6fa5;   颜色:# 4a6fa5;color   颜色: #4a6fa5;   Color: #4a6fa5;
+            color: #4a6fa5;
             margin-bottom: 10px;
         }
         
@@ -67,34 +55,34 @@
             font-size: 1.1em;
         }
         
-        section {   节{
+        section {
             margin-bottom: 25px;
         }
         
         h2 {
-            color: #4a6fa5;   颜色:# 4a6fa5;
-            border-left: 5px solid #a3d5ff;左边框：5 像素宽的实线，颜色为 #a3d5ff；
+            color: #4a6fa5;
+            border-left: 5px solid #a3d5ff;
             padding-left: 10px;
             margin-bottom: 15px;
         }
         
-        .highlight {   ．突出{
-            color: #e74c3c;   颜色:# e74c3c;
-            font-weight: bold;   粗细:大胆的;
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
         }
         
-        .warning {   ．警告{
-            background-color: #fff5f5;背景颜色：#fff5f5
-            border-left: 5px solid #ff6b6b;左边框：5 像素宽的实线，颜色为 #ff6b6b；
-            padding: 15px;   填充:15 px;
-            margin: 15px 0;   Margin: 15px 0；
-            border-radius: 0 5px 5px 0;   border-radius   这个特性: 0 5px 5px 0；  （此句为 CSS 样式代码，通常不翻译，但若要翻译其含义，可译
+        .warning {
+            background-color: #fff5f5;
+            border-left: 5px solid #ff6b6b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
         }
         
-        .personality {   ．个性{
-            background-color: #f0f9ff;背景颜色：#f0f9ff
-            border-left: 5px solid #4a6fa5;左边框：5 像素宽的实线，颜色为 #4a6fa5；
-            padding: 15px;   填充:15 px;
+        .personality {
+            background-color: #f0f9ff;
+            border-left: 5px solid #4a6fa5;
+            padding: 15px;
             margin: 15px 0;
             border-radius: 0 5px 5px 0;
         }
@@ -105,7 +93,7 @@
             padding: 15px;
             margin: 15px 0;
             border-radius: 0 5px 5px 0;
-            text-align: center;   text-align:中心;
+            text-align: center;
         }
         
         .contact {
@@ -146,7 +134,7 @@
 <body>
     <div class="container">
         <header>
-            <img src="6a610faf2c20463a.jpg" >
+            <img src="6a610faf2c20463a.jpg" alt="迷雾的头像" class="avatar">
             <h1>迷雾</h1>
             <p class="location">刷新点：中国浙江</p>
         </header>
