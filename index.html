@@ -4,55 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>迷雾的个人主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Microsoft YaHei', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: #f5f5f5;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
             color: #333;
             line-height: 1.6;
+            min-height: 100vh;
             padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .container {
-            background-color: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #4a6fa5, #e74c3c, #9b59b6);
         }
         
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             padding-bottom: 20px;
             border-bottom: 2px solid #eee;
+            position: relative;
+        }
+        
+        .avatar-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
         }
         
         .avatar {
-            width: 150px;
-            height: 150px;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            margin: 0 auto 15px;
-            border: 5px solid #a3d5ff;
-            display: block;
+            border: 6px solid #4a6fa5;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .online-status {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 25px;
+            height: 25px;
+            background-color: #2ecc71;
+            border: 3px solid white;
+            border-radius: 50%;
         }
         
         h1 {
             color: #4a6fa5;
             margin-bottom: 10px;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
         
         .location {
             color: #777;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
         }
         
         section {
@@ -62,8 +115,16 @@
         h2 {
             color: #4a6fa5;
             border-left: 5px solid #a3d5ff;
-            padding-left: 10px;
+            padding-left: 15px;
             margin-bottom: 15px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2 i {
+            color: #e74c3c;
         }
         
         .highlight {
@@ -76,7 +137,8 @@
             border-left: 5px solid #ff6b6b;
             padding: 15px;
             margin: 15px 0;
-            border-radius: 0 5px 5px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
         
         .personality {
@@ -84,7 +146,8 @@
             border-left: 5px solid #4a6fa5;
             padding: 15px;
             margin: 15px 0;
-            border-radius: 0 5px 5px 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
         
         .future {
@@ -92,96 +155,445 @@
             border-left: 5px solid #9b59b6;
             padding: 15px;
             margin: 15px 0;
-            border-radius: 0 5px 5px 0;
+            border-radius: 0 8px 8px 0;
             text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .game-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .game-tag {
+            background-color: #4a6fa5;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .hobby-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .hobby-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 80px;
+        }
+        
+        .hobby-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #4a6fa5;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
         }
         
         .contact {
             text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
+            margin-top: 40px;
+            padding-top: 30px;
             border-top: 2px solid #eee;
         }
         
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
         .contact-btn {
-            display: inline-block;
-            background-color: #4a6fa5;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #4a6fa5, #3a5a80);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 30px;
             text-decoration: none;
-            margin: 5px;
             transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(74, 111, 165, 0.3);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
         }
         
         .contact-btn:hover {
-            background-color: #3a5a80;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 7px 15px rgba(74, 111, 165, 0.4);
         }
         
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
+        .footer-note {
+            margin-top: 30px;
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        /* 弹窗样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: modalFadeIn 0.3s;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
             }
-            
-            .avatar {
-                width: 120px;
-                height: 120px;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: #777;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-btn:hover {
+            color: #e74c3c;
+        }
+        
+        .modal-title {
+            color: #4a6fa5;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 15px;
+            background-color: #f5f9ff;
+            border-radius: 10px;
+            border-left: 4px solid #4a6fa5;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #4a6fa5;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .contact-text {
+            flex: 1;
+        }
+        
+        .contact-label {
+            font-weight: bold;
+            color: #4a6fa5;
+            font-size: 0.9rem;
+        }
+        
+        .contact-value {
+            font-size: 1.1rem;
+            margin-top: 3px;
+            word-break: break-all;
+        }
+        
+        .copy-btn {
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .copy-btn:hover {
+            background-color: #3a5a80;
+        }
+        
+        .modal-footer {
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .steam-code {
+            background-color: #171a21;
+            color: #c7d5e0;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 10px 0;
+            letter-spacing: 1px;
+        }
+        
+        .steam-guide {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <img src="-6a610faf2c20463a.jpg" >
+            <div class="avatar-container">
+                <!-- 替换为实际头像路径 -->
+                <img src="https://via.placeholder.com/180" alt="迷雾的头像" class="avatar">
+                <div class="online-status" title="在线"></div>
+            </div>
             <h1>迷雾</h1>
-            <p class="location">刷新点：中国浙江</p>
+            <p class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                刷新点：中国浙江
+            </p>
         </header>
         
-        <section>
-            <h2>重度沉迷</h2>
-            <p><span class="highlight">永劫无间！睡醒就打劫！</span>但也玩得超杂，啥游戏都乐意尝试。</p>
-            <p>求安利好玩的游戏，随时准备入坑！想扩点能一起打游戏的伙伴！</p>
-        </section>
-        
-        <section>
-            <h2>爱好</h2>
-            <ul>
-                <li>打游戏（核心技能！）</li>
-                <li>正在自学摄影&后期（求大佬带带！）</li>
-            </ul>
-        </section>
-        
-        <section>
-            <h2>精神状态</h2>
-            <div class="personality">
-                <p><span class="highlight">ENFP！</span>网上社牛，线下略i~</p>
-                <p>爱搞点抽象，在亲友面前会放飞自我（发疯版）</p>
+        <div class="content">
+            <div class="left-column">
+                <section>
+                    <h2><i class="fas fa-gamepad"></i> 重度沉迷</h2>
+                    <p><span class="highlight">永劫无间！睡醒就打劫！</span>但也玩得超杂，啥游戏都乐意尝试。</p>
+                    <p>求安利好玩的游戏，随时准备入坑！想扩点能一起打游戏的伙伴！</p>
+                    
+                    <div class="game-list">
+                        <div class="game-tag">永劫无间</div>
+                        <div class="game-tag">猛兽派对</div>
+                        <div class="game-tag">明日方舟</div>
+                        <div class="game-tag">三角洲</div>
+                        <div class="game-tag">单机游戏</div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2><i class="fas fa-heart"></i> 爱好</h2>
+                    <div class="hobby-list">
+                        <div class="hobby-item">
+                            <div class="hobby-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <span>打游戏<br>（核心技能！）</span>
+                        </div>
+                        <div class="hobby-item">
+                            <div class="hobby-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <span>摄影&后期<br>（自学中）</span>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2><i class="fas fa-brain"></i> 精神状态</h2>
+                    <div class="personality">
+                        <p><span class="highlight">ENFP！</span>网上社牛，线下略i~</p>
+                        <p>爱搞点抽象，在亲友面前会放飞自我（发疯版）</p>
+                    </div>
+                </section>
             </div>
-        </section>
-        
-        <section>
-            <h2>雷区注意</h2>
-            <div class="warning">
-                <p>一上来就问身高体重还有长度的 ×</p>
-                <p>没有边界感的 ×</p>
+            
+            <div class="right-column">
+                <section>
+                    <h2><i class="fas fa-exclamation-triangle"></i> 雷区注意</h2>
+                    <div class="warning">
+                        <p><i class="fas fa-times"></i> 一上来就问身高体重还有长度的 ×</p>
+                        <p><i class="fas fa-times"></i> 没有边界感的 ×</p>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2><i class="fas fa-paw"></i> 关于毛毛</h2>
+                    <div class="future">
+                        <p>预计<span class="highlight">26年7、8月</span>诞生！</p>
+                        <p>欢迎各位老师兽聚来逮我呀~</p>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2><i class="fas fa-users"></i> 寻找游戏伙伴</h2>
+                    <p>希望找到能一起打游戏、交流摄影的小伙伴！</p>
+                    <p>不介意新手，只要有热情就行~</p>
+                    <p>期待与有趣的灵魂相遇！</p>
+                </section>
             </div>
-        </section>
-        
-        <section>
-            <h2>关于毛毛</h2>
-            <div class="future">
-                <p>预计<span class="highlight">26年7、8月</span>诞生！</p>
-                <p>欢迎各位老师兽聚来逮我呀~</p>
-            </div>
-        </section>
+        </div>
         
         <div class="contact">
+            <h2><i class="fas fa-comment-dots"></i> 联系我</h2>
             <p>想一起打游戏或者交流摄影的小伙伴：</p>
-            <a href="1190662481" class="contact-btn">steam好友代码</a>
-            <a href="1793832484" class="contact-btn">QQ</a>
+            
+            <div class="contact-buttons">
+                <!-- 替换为实际联系方式 -->
+                <button class="contact-btn" onclick="showContactModal()">
+                    <i class="fas fa-address-card"></i> 查看联系方式
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer-note">
+            <p>最后更新: 2024年 | 迷雾的小窝</p>
         </div>
     </div>
+
+    <!-- 联系方式弹窗 -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeContactModal()">&times;</span>
+            <h2 class="modal-title">联系方式</h2>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-qq"></i>
+                    </div>
+                    <div class="contact-text">
+                        <div class="contact-label">QQ号码</div>
+                        <div class="contact-value">1793832484</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('123456789')">复制</button>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-weixin"></i>
+                    </div>
+                    <div class="contact-text">
+                        <div class="contact-label">微信号</div>
+                        <div class="contact-value">mw2021717</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('miwu_game')">复制</button>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-steam"></i>
+                    </div>
+                    <div class="contact-text">
+                        <div class="contact-label">Steam好友代码</div>
+                        <div class="steam-code">STEAM:1190662481</div>
+                        <div class="steam-guide">在Steam客户端中搜索此代码添加好友</div>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard('STEAM_0:1:12345678')">复制</button>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <p>添加好友时请备注"游戏伙伴"或"摄影交流"哦~</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 简单的在线状态指示器
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusIndicator = document.querySelector('.online-status');
+            
+            // 模拟在线状态（实际应用中可以从服务器获取）
+            function updateOnlineStatus() {
+                statusIndicator.style.backgroundColor = '#2ecc71';
+                statusIndicator.title = '在线 - 正在游戏中';
+            }
+            
+            updateOnlineStatus();
+        });
+        
+        // 弹窗控制函数
+        function showContactModal() {
+            document.getElementById('contactModal').style.display = 'flex';
+        }
+        
+        function closeContactModal() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+        
+        // 点击弹窗外部关闭
+        window.onclick = function(event) {
+            const modal = document.getElementById('contactModal');
+            if (event.target === modal) {
+                closeContactModal();
+            }
+        }
+        
+        // 复制到剪贴板功能
+        function copyToClipboard(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            
+            // 显示复制成功提示
+            alert('已复制到剪贴板: ' + text);
+        }
+    </script>
 </body>
 </html>
