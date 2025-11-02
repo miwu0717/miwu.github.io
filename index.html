@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迷雾的个人主页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 5px solid #a3d5ff;
+            display: block;
+        }
+        
+        h1 {
+            color: #4a6fa5;
+            margin-bottom: 10px;
+        }
+        
+        .location {
+            color: #777;
+            font-size: 1.1em;
+        }
+        
+        section {
+            margin-bottom: 25px;
+        }
+        
+        h2 {
+            color: #4a6fa5;
+            border-left: 5px solid #a3d5ff;
+            padding-left: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .warning {
+            background-color: #fff5f5;
+            border-left: 5px solid #ff6b6b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .personality {
+            background-color: #f0f9ff;
+            border-left: 5px solid #4a6fa5;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .future {
+            background-color: #f9f0ff;
+            border-left: 5px solid #9b59b6;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+            text-align: center;
+        }
+        
+        .contact {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            background-color: #4a6fa5;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background-color: #3a5a80;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .avatar {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="6a610faf2c20463a.jpg" alt="迷雾的头像" class="avatar">
+            <h1>迷雾</h1>
+            <p class="location">刷新点：中国浙江</p>
+        </header>
+        
+        <section>
+            <h2>重度沉迷</h2>
+            <p><span class="highlight">永劫无间！睡醒就打劫！</span>但也玩得超杂，啥游戏都乐意尝试。</p>
+            <p>求安利好玩的游戏，随时准备入坑！想扩点能一起打游戏的伙伴！</p>
+        </section>
+        
+        <section>
+            <h2>爱好</h2>
+            <ul>
+                <li>打游戏（核心技能！）</li>
+                <li>正在自学摄影&后期（求大佬带带！）</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>精神状态</h2>
+            <div class="personality">
+                <p><span class="highlight">ENFP！</span>网上社牛，线下略i~</p>
+                <p>爱搞点抽象，在亲友面前会放飞自我（发疯版）</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>雷区注意</h2>
+            <div class="warning">
+                <p>一上来就问身高体重还有长度的 ×</p>
+                <p>没有边界感的 ×</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>关于毛毛</h2>
+            <div class="future">
+                <p>预计<span class="highlight">26年7、8月</span>诞生！</p>
+                <p>欢迎各位老师兽聚来逮我呀~</p>
+            </div>
+        </section>
+        
+        <div class="contact">
+            <p>想一起打游戏或者交流摄影的小伙伴：</p>
+            <a href="#" class="contact-btn">游戏ID</a>
+            <a href="#" class="contact-btn">社交平台</a>
+        </div>
+    </div>
+</body>
+</html>
